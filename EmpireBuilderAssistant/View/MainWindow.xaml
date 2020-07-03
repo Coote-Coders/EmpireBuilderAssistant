@@ -330,12 +330,10 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="3">
-                    <StackPanel Grid.Row="3">
-                        <Button Content="About"
-                                Margin="10"
-                                HorizontalAlignment="Right" 
-                                Click="Button_Click"/>
-                    </StackPanel>
+                    <Button Content="About"
+                            Margin="10"
+                            HorizontalAlignment="Right" 
+                            Click="Button_Click"/>
                 </StackPanel>
             </Grid>
         </Grid>
