@@ -1,0 +1,181 @@
+﻿<Window x:Class="EmpireBuilderAssistant.View.CardSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmpireBuilderAssistant"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        xmlns:viewmodel="clr-namespace:EmpireBuilderAssistant.ViewModel"
+        xmlns:c="comment"
+        mc:Ignorable="d c"        
+        Title="Edit card" Height="600" Width="300">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="MyBoolToVisConverter" />
+        <local:BooleanToInkCanvasEditingModeConverter x:Key="MyBoolToEditModeConverter" />
+        <viewmodel:ObjectLists x:Key="vm"></viewmodel:ObjectLists>
+    </Window.Resources>
+
+    <DockPanel Background="#FF12420E">
+        <StackPanel DockPanel.Dock="Bottom">
+
+            <Button Content="Randomize cards"
+                    DataContext="{Binding Source={StaticResource vm}}"
+                    Visibility="{Binding ShowDebugButtons, Converter={StaticResource MyBoolToVisConverter}}"
+                    Width="120"
+                    Margin="10"
+                    HorizontalAlignment="Right"                    
+                    Click="Button_Click_Random"/>
+
+            <Button Click="Button_Click"
+                    Width="50"
+                    Margin="10"
+                    HorizontalAlignment="Right"
+                    Content ="Ok"/>
+        </StackPanel>
+
+        <!--- Cards -->
+        <StackPanel DockPanel.Dock="Top" 
+                    Orientation="Horizontal">
+            <ItemsControl x:Name="CardItems">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!-- One for each card -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <!--- Grid for card name, delvery options and spacer-->
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <!-- Card name -->
+                                <RowDefinition Height="Auto" />
+
+                                <!--- Grid for the three routes -->
+                                <RowDefinition Height="Auto" />
+
+                                <!--- Spacer -->
+                                <RowDefinition Height="5" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <!--- Cards -->
+                                <ColumnDefinition Width="300"/>
+
+                                <!--- Spacer -->
+                                <ColumnDefinition Width="5"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--- Card label -->
+                            <Grid Grid.Row="0"
+                                   Background="#FF25781E">
+                                <Label
+                                            Content="{Binding CardName}"
+                                            FontSize="10"
+                                            FontWeight="Bold"
+                                            Foreground="White"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!--- Contracts options all three in a grid -->
+                            <Grid Grid.Row="1">
+
+                                <Grid.RowDefinitions>
+                                    <!-- One row per delivery option -->
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+
+                                    <!--- White line -->
+                                    <RowDefinition Height="5" />
+                                </Grid.RowDefinitions>
+
+                                <!--- 4 columns -->
+                                <Grid.ColumnDefinitions>
+                                    <!--- Destination -->
+                                    <ColumnDefinition Width="Auto" />
+                                    <!--- Cargo -->
+                                    <ColumnDefinition Width="Auto" />
+                                    <!--- Value -->
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Desination cities -->
+                                <ComboBox Grid.Row="0" Grid.Column="0"
+                                                MinWidth="100"
+                                                Margin="5"
+                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
+                                                SelectedItem="{Binding Path=Contracts[0].Destintion}"
+                                                DisplayMemberPath="Name" 
+                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                <ComboBox Grid.Row="1" Grid.Column="0"
+                                                MinWidth="100"
+                                                Margin="5"
+                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
+                                                SelectedItem="{Binding Path=Contracts[1].Destintion}"
+                                                DisplayMemberPath="Name" 
+                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                <ComboBox Grid.Row="2" Grid.Column="0"
+                                                MinWidth="100"
+                                                Margin="5"
+                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
+                                                SelectedItem="{Binding Path=Contracts[2].Destintion}"
+                                                DisplayMemberPath="Name" 
+                                                SelectionChanged="ComboBox_SelectionChanged"/>
+
+                                <!-- Cargos -->
+                                <ComboBox Grid.Row="0" Grid.Column="1"
+                                                MinWidth="100"
+                                                Margin="5"
+                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
+                                                SelectedItem="{Binding Path=Contracts[0].Cargo}"
+                                                DisplayMemberPath="Name" 
+                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                <ComboBox Grid.Row="1" Grid.Column="1"
+                                                MinWidth="100"
+                                                Margin="5"
+                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
+                                                SelectedItem="{Binding Path=Contracts[1].Cargo}"
+                                                DisplayMemberPath="Name" 
+                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                <ComboBox Grid.Row="2" Grid.Column="1"
+                                                MinWidth="100"
+                                                Margin="5"
+                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
+                                                SelectedItem="{Binding Path=Contracts[2].Cargo}"
+                                                DisplayMemberPath="Name" 
+                                                SelectionChanged="ComboBox_SelectionChanged"/>
+
+                                <!-- Value -->
+                                <TextBox Grid.Row="0" Grid.Column="2"
+                                                MinWidth="50"
+                                                Margin="5"
+                                                Text="{Binding Path=Contracts[0].Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                                PreviewTextInput="NumberValidationTextBox"
+                                                TextChanged="TextBox_TextChanged"/>
+                                <TextBox Grid.Row="1" Grid.Column="2"
+                                                MinWidth="50"
+                                                Margin="5"
+                                                Text="{Binding Path=Contracts[1].Value}"  
+                                                PreviewTextInput="NumberValidationTextBox"
+                                                TextChanged="TextBox_TextChanged"/>
+                                <TextBox Grid.Row="2" Grid.Column="2"
+                                                MinWidth="50"
+                                                Margin="5"
+                                                Text="{Binding Path=Contracts[2].Value}"
+                                                PreviewTextInput="NumberValidationTextBox"
+                                                TextChanged="TextBox_TextChanged"/>
+                            </Grid>
+
+                            <!--- Spacer -->
+                            <Grid Grid.Row="2" Background="White"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DockPanel>
+</Window>
