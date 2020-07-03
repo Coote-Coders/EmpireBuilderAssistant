@@ -31,8 +31,9 @@ namespace EmpireBuilderAssistant
 
         public MainWindow()
         {
-            actionList = new ActionList();
+            // Display pickups location on map
             displayDestinationsOnly = false;
+
             InitializeComponent();
             this.Loaded += MapPage_Loaded;
 
@@ -45,6 +46,9 @@ namespace EmpireBuilderAssistant
                                                     new Card("Card 2", Colors.Green),
                                                     new Card("Card 3", Colors.Blue)};
 
+            // Create action list
+            actionList = new ActionList();
+
             // Set binding
             ActionListBox.DataContext = actionList;
             CardItems.ItemsSource = cards;
@@ -52,6 +56,7 @@ namespace EmpireBuilderAssistant
 
         private void MapPage_Loaded(object sender, RoutedEventArgs e)
         {
+            // Draw the icons for each conract in the card section
             try
             {
                 foreach (var card in CardItems.Items)
@@ -74,7 +79,7 @@ namespace EmpireBuilderAssistant
                 Console.Write(ex);
             }
 
-            // Open card edit box
+            // Open card edit box as app has just started
             OpenCardEditDiagBox();
         }
 
@@ -107,6 +112,7 @@ namespace EmpireBuilderAssistant
                         continue;
                     }
 
+                    // Skip items that are not valid
                     if (contract.Destintion == null || contract.SelectedPickup == null || contract.SelectedPickup.PickupCity == null)
                     {
                         continue;
@@ -117,6 +123,7 @@ namespace EmpireBuilderAssistant
 
                     if (displayDestinationsOnly)
                     {
+                        // Skip drawing pickup icons
                         continue;
                     }
 
@@ -126,7 +133,7 @@ namespace EmpireBuilderAssistant
                         // Draw all options
                         foreach (PickupInfo pickupInfo in contract.PickupList)
                         {
-                            // Skip all city entry
+                            // Skip the "All City" entry
                             if (pickupInfo.PickupCity.PosX == 0 && pickupInfo.PickupCity.PosY == 0)
                             {
                                 continue;
@@ -150,6 +157,7 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_Clear(object sender, RoutedEventArgs e)
         {
+            // Clear the wet ink
             mapInkCanvas.Strokes.Clear();
         }
 
@@ -168,18 +176,23 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_Copy(object sender, RoutedEventArgs e)
         {
+            // Change all current wet ink to green
             foreach (var stroke in mapInkCanvas.Strokes)
             {
                 stroke.DrawingAttributes.Color = Colors.Green;
             }
 
+            // Copy all wet ink strokes to dry ink canvas
             var Stokes = mapInkCanvas.Strokes;
             mapInkCanvasStatic.Strokes.Add(Stokes);
+
+            // Clear wet ink
             mapInkCanvas.Strokes.Clear();
         }
 
         private void Button_Click_Clear_Static(object sender, RoutedEventArgs e)
         {
+            // Clear the dry ink
             mapInkCanvasStatic.Strokes.Clear();
         }
 
@@ -195,6 +208,7 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_ListDel(object sender, RoutedEventArgs e)
         {
+            // Remove current action
             if (ActionListBox.SelectedItems.Count > 0)
             {
                 PlayerAction selected = ActionListBox.SelectedItem as PlayerAction;
@@ -204,6 +218,7 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_ListDown(object sender, RoutedEventArgs e)
         {
+            // Move current action down
             if (ActionListBox.SelectedItems.Count > 0)
             {
                 PlayerAction selected = ActionListBox.SelectedItem as PlayerAction;
@@ -229,6 +244,7 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_ListUp(object sender, RoutedEventArgs e)
         {
+            // Move current item up
             if (ActionListBox.SelectedItems.Count > 0)
             {
                 PlayerAction selected = ActionListBox.SelectedItem as PlayerAction;
@@ -268,6 +284,7 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_Contract1Add(object sender, RoutedEventArgs e)
         {
+            // An 'Add' buttons for card 1 was clicked
             Button senderButton = sender as Button;
             Card card = senderButton.DataContext as Card;
             if (card != null)
@@ -278,6 +295,7 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_Contract2Add(object sender, RoutedEventArgs e)
         {
+            // An 'Add' buttons for card 2 was clicked
             Button senderButton = sender as Button;
             Card card = senderButton.DataContext as Card;
             if (card != null)
@@ -288,6 +306,7 @@ namespace EmpireBuilderAssistant
 
         private void Button_Click_Contract3Add(object sender, RoutedEventArgs e)
         {
+            // An 'Add' buttons for card 3 was clicked
             Button senderButton = sender as Button;
             Card card = senderButton.DataContext as Card;
             if (card != null)
@@ -298,6 +317,7 @@ namespace EmpireBuilderAssistant
 
         private void Canvas_Loaded(object sender, RoutedEventArgs e)
         {
+            // Draw the contract icons for this action item
             Canvas senderCanvas = sender as Canvas;
             PlayerAction action = senderCanvas.DataContext as PlayerAction;
             if (action != null)
@@ -308,12 +328,14 @@ namespace EmpireBuilderAssistant
 
         private void DestionationOnly_Click(object sender, RoutedEventArgs e)
         {
+            // Check if we want to show destination only
             displayDestinationsOnly = DestionationOnly.IsChecked == true;
             ReDraw();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // Show the about box
             AboutBox modalWindow = new AboutBox();
             modalWindow.ShowDialog();
         }

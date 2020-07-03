@@ -124,6 +124,7 @@ namespace EmpireBuilderAssistant.ViewModel
 
         static public City FindCity(string name)
         {
+            // Lookup city object by name
             foreach (City city in Cities)
             {
                 if (city.Name == name)
@@ -132,12 +133,14 @@ namespace EmpireBuilderAssistant.ViewModel
                 }
             }
 
+            // Opps was not found should not happen
             Debugger.Break();
             return null;
         }
 
         static public Cargo FindCargo(string name)
         {
+            // Find cargo object by name
             foreach (Cargo cargo in Cargos)
             {
                 if (cargo.Name == name)
@@ -146,6 +149,7 @@ namespace EmpireBuilderAssistant.ViewModel
                 }
             }
 
+            // Opps was not found should not happen
             Debugger.Break();
             return null;
         }

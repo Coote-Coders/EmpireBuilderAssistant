@@ -50,10 +50,12 @@ namespace EmpireBuilderAssistant.ViewModel
         {
             if (map)
             {
+                // Map icon size
                 width = height = 80;
             }
             else
             {
+                // Card label and action icon size
                 width = canvas.ActualWidth - 5;
                 height = canvas.ActualHeight - 5;
             }

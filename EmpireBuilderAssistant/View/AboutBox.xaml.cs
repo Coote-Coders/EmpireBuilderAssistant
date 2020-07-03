@@ -33,6 +33,9 @@ namespace EmpireBuilderAssistant.View
             InitializeComponent();
             this.Loaded += MapPage_Loaded;
 
+            // Set this window as apps current window to get correct alt-tab behaviour
+            this.Owner = App.Current.MainWindow;
+
             // Center window
             Left = (System.Windows.SystemParameters.WorkArea.Width - Width) / 2;
             Top = (System.Windows.SystemParameters.WorkArea.Height - Height) / 2;
@@ -40,6 +43,7 @@ namespace EmpireBuilderAssistant.View
 
         private void MapPage_Loaded(object sender, RoutedEventArgs e)
         {
+            // Remove system icons from window frame
             var hwnd = new WindowInteropHelper(this).Handle;
             SetWindowLong(hwnd, GWL_STYLE, GetWindowLong(hwnd, GWL_STYLE) & ~WS_SYSMENU);
         }

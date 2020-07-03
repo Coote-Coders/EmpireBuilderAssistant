@@ -71,18 +71,16 @@
                             <!--- Card label -->
                             <Grid Grid.Row="0"
                                    Background="#FF25781E">
-                                <Label
-                                            Content="{Binding CardName}"
-                                            FontSize="10"
-                                            FontWeight="Bold"
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"/>
+                                <Label Content="{Binding CardName}"
+                                       FontSize="10"
+                                       FontWeight="Bold"
+                                       Foreground="White"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
                             </Grid>
 
                             <!--- Contracts options all three in a grid -->
                             <Grid Grid.Row="1">
-
                                 <Grid.RowDefinitions>
                                     <!-- One row per delivery option -->
                                     <RowDefinition Height="Auto" />
@@ -105,69 +103,69 @@
 
                                 <!-- Desination cities -->
                                 <ComboBox Grid.Row="0" Grid.Column="0"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
-                                                SelectedItem="{Binding Path=Contracts[0].Destintion}"
-                                                DisplayMemberPath="Name" 
-                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                           MinWidth="100"
+                                           Margin="5"
+                                           ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
+                                           SelectedItem="{Binding Path=Contracts[0].Destintion}"
+                                           DisplayMemberPath="Name" 
+                                           SelectionChanged="ComboBox_SelectionChanged"/>
                                 <ComboBox Grid.Row="1" Grid.Column="0"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
-                                                SelectedItem="{Binding Path=Contracts[1].Destintion}"
-                                                DisplayMemberPath="Name" 
-                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                          MinWidth="100"
+                                          Margin="5"
+                                          ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
+                                          SelectedItem="{Binding Path=Contracts[1].Destintion}"
+                                          DisplayMemberPath="Name" 
+                                          SelectionChanged="ComboBox_SelectionChanged"/>
                                 <ComboBox Grid.Row="2" Grid.Column="0"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
-                                                SelectedItem="{Binding Path=Contracts[2].Destintion}"
-                                                DisplayMemberPath="Name" 
-                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                          MinWidth="100"
+                                          Margin="5"
+                                          ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cities}}"
+                                          SelectedItem="{Binding Path=Contracts[2].Destintion}"
+                                          DisplayMemberPath="Name" 
+                                          SelectionChanged="ComboBox_SelectionChanged"/>
 
                                 <!-- Cargos -->
                                 <ComboBox Grid.Row="0" Grid.Column="1"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
-                                                SelectedItem="{Binding Path=Contracts[0].Cargo}"
-                                                DisplayMemberPath="Name" 
-                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                          MinWidth="100"
+                                          Margin="5"
+                                          ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
+                                          SelectedItem="{Binding Path=Contracts[0].Cargo}"
+                                          DisplayMemberPath="Name" 
+                                          SelectionChanged="ComboBox_SelectionChanged"/>
                                 <ComboBox Grid.Row="1" Grid.Column="1"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
-                                                SelectedItem="{Binding Path=Contracts[1].Cargo}"
-                                                DisplayMemberPath="Name" 
-                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                          MinWidth="100"
+                                          Margin="5"
+                                          ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
+                                          SelectedItem="{Binding Path=Contracts[1].Cargo}"
+                                          DisplayMemberPath="Name" 
+                                          SelectionChanged="ComboBox_SelectionChanged"/>
                                 <ComboBox Grid.Row="2" Grid.Column="1"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
-                                                SelectedItem="{Binding Path=Contracts[2].Cargo}"
-                                                DisplayMemberPath="Name" 
-                                                SelectionChanged="ComboBox_SelectionChanged"/>
+                                          MinWidth="100"
+                                          Margin="5"
+                                          ItemsSource="{Binding Source={x:Static viewmodel:ObjectLists.Cargos}}"
+                                          SelectedItem="{Binding Path=Contracts[2].Cargo}"
+                                          DisplayMemberPath="Name" 
+                                          SelectionChanged="ComboBox_SelectionChanged"/>
 
                                 <!-- Value -->
                                 <TextBox Grid.Row="0" Grid.Column="2"
-                                                MinWidth="50"
-                                                Margin="5"
-                                                Text="{Binding Path=Contracts[0].Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
-                                                PreviewTextInput="NumberValidationTextBox"
-                                                TextChanged="TextBox_TextChanged"/>
+                                         MinWidth="50"
+                                         Margin="5"
+                                         Text="{Binding Path=Contracts[0].Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  
+                                         PreviewTextInput="NumberValidationTextBox"
+                                         TextChanged="TextBox_TextChanged"/>
                                 <TextBox Grid.Row="1" Grid.Column="2"
-                                                MinWidth="50"
-                                                Margin="5"
-                                                Text="{Binding Path=Contracts[1].Value}"  
-                                                PreviewTextInput="NumberValidationTextBox"
-                                                TextChanged="TextBox_TextChanged"/>
+                                         MinWidth="50"
+                                         Margin="5"
+                                         Text="{Binding Path=Contracts[1].Value}"  
+                                         PreviewTextInput="NumberValidationTextBox"
+                                         TextChanged="TextBox_TextChanged"/>
                                 <TextBox Grid.Row="2" Grid.Column="2"
-                                                MinWidth="50"
-                                                Margin="5"
-                                                Text="{Binding Path=Contracts[2].Value}"
-                                                PreviewTextInput="NumberValidationTextBox"
-                                                TextChanged="TextBox_TextChanged"/>
+                                         MinWidth="50"
+                                         Margin="5"
+                                         Text="{Binding Path=Contracts[2].Value}"
+                                         PreviewTextInput="NumberValidationTextBox"
+                                         TextChanged="TextBox_TextChanged"/>
                             </Grid>
 
                             <!--- Spacer -->

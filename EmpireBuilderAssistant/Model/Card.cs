@@ -48,15 +48,19 @@ namespace EmpireBuilderAssistant.Model
         {
             if (NeedRecalc)
             {
+                // Contracts updated so update the contract text
                 foreach (Contract contract in Contracts)
                 {
                     contract.RecalcPickupInfo();
-                }
-                IsCardVisible = true;
+                }                
                 NeedRecalc = false;
+
+                // As it was updated lets make it visible on map
+                IsCardVisible = true;
             }
         }
 
+        // Used for debug
         public void MakeRandomContracts()
         {
             foreach (Contract contract in Contracts)

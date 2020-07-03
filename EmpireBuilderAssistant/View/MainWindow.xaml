@@ -18,11 +18,10 @@
 
         <!-- Top pannel with cards -->
         <!-- Cards ItemsControl -->
-        <ItemsControl  
-                DockPanel.Dock="Top" 
-                HorizontalContentAlignment="Stretch"
-                x:Name="CardItems"
-                Background="#FF12420E">
+        <ItemsControl DockPanel.Dock="Top" 
+                      HorizontalContentAlignment="Stretch"
+                      x:Name="CardItems"
+                      Background="#FF12420E">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="1"></UniformGrid>
@@ -52,27 +51,26 @@
 
                         <!--- Spacer -->
                         <Grid Grid.Row="0" 
-                                  Grid.Column="1"
-                                  Background="White"/>
+                              Grid.Column="1"
+                              Background="White"/>
 
                         <Grid Grid.Row="1" 
-                                  Grid.Column="1"
-                                  Background="White"/>
+                              Grid.Column="1"
+                              Background="White"/>
 
                         <!--- Card label -->
                         <Grid Grid.Row="0"
-                                   Background="#FF25781E">
-                            <Label
-                                            Content="{Binding CardName}"
-                                            FontSize="10"
-                                            FontWeight="Bold"
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"/>
+                              Background="#FF25781E">
+                            <Label Content="{Binding CardName}"
+                                   FontSize="10"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
                         </Grid>
 
                         <!--- Delivery options all three in a grid -->
-                        <Grid Grid.Row="1" >
+                        <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
                                 <!-- One row per delivery option -->
                                 <RowDefinition Height="Auto" />
@@ -91,7 +89,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <!--- Delivery icon -->
                                 <ColumnDefinition Width="Auto" />
-                                <!--- Pickup City -->
+                                <!--- Contract options -->
                                 <ColumnDefinition />
                                 <!--- Add to action list -->
                                 <ColumnDefinition Width="Auto"/>
@@ -99,70 +97,73 @@
 
                             <!-- Card enable/disable-->
                             <CheckBox Grid.Row="1" Grid.Column="0"
-                                                    IsChecked="{Binding Path=IsCardVisible}"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Click="CheckBox_Click_RedrawOverlay"/>
+                                      IsChecked="{Binding Path=IsCardVisible}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Click="CheckBox_Click_RedrawOverlay"/>
 
                             <!-- Route enable/disable-->
                             <CheckBox Grid.Row="0" Grid.Column="1"
-                                                    Margin="5"
-                                                    IsChecked="{Binding Path=Contracts[0].IsContractVisible}"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Click="CheckBox_Click_RedrawOverlay"/>
+                                      Margin="5"
+                                      IsChecked="{Binding Path=Contracts[0].IsContractVisible}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Click="CheckBox_Click_RedrawOverlay"/>
                             <CheckBox Grid.Row="1" Grid.Column="1"
-                                                    Margin="5"
-                                                    IsChecked="{Binding Path=Contracts[1].IsContractVisible}"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Click="CheckBox_Click_RedrawOverlay"/>
+                                      Margin="5"
+                                      IsChecked="{Binding Path=Contracts[1].IsContractVisible}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Click="CheckBox_Click_RedrawOverlay"/>
                             <CheckBox Grid.Row="2" Grid.Column="1"
-                                                    Margin="5"
-                                                    IsChecked="{Binding Path=Contracts[2].IsContractVisible}"
-                                                    HorizontalAlignment="Center"
-                                                    VerticalAlignment="Center"
-                                                    Click="CheckBox_Click_RedrawOverlay"/>
+                                      Margin="5"
+                                      IsChecked="{Binding Path=Contracts[2].IsContractVisible}"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Click="CheckBox_Click_RedrawOverlay"/>
 
                             <!--- Icon for each route -->
-                            <Canvas x:Name="RouteIcon1" Grid.Row="0" Grid.Column="2"
-                                                Margin="5"
-                                                Background="White"
-                                                Width="20"
-                                                Height="20"/>
-                            <Canvas x:Name="RouteIcon2" Grid.Row="1" Grid.Column="2"
-                                                Margin="5"
-                                                Background="White"
-                                                Width="20"
-                                                Height="20"/>
-                            <Canvas x:Name="RouteIcon3" Grid.Row="2" Grid.Column="2"
-                                                Margin="5"
-                                                Background="White"
-                                                Width="20"
-                                                Height="20"/>
+                            <Canvas Grid.Row="0" Grid.Column="2"
+                                    x:Name="RouteIcon1" 
+                                    Margin="5"
+                                    Background="White"
+                                    Width="20"
+                                    Height="20"/>
+                            <Canvas Grid.Row="1" Grid.Column="2"
+                                    x:Name="RouteIcon2"
+                                    Margin="5"
+                                    Background="White"
+                                    Width="20"
+                                    Height="20"/>
+                            <Canvas Grid.Row="2" Grid.Column="2"
+                                    x:Name="RouteIcon3"
+                                    Margin="5"
+                                    Background="White"
+                                    Width="20"
+                                    Height="20"/>
 
                             <!-- Pickup city -->
                             <ComboBox Grid.Row="0" Grid.Column="3"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Path=Contracts[0].PickupList}"  
-                                                SelectedItem="{Binding Path=Contracts[0].SelectedPickup}"
-                                                DisplayMemberPath="PickupText"
-                                                SelectionChanged ="SelectionChanged_RedrawOverlay"/>
+                                      MinWidth="100"
+                                      Margin="5"
+                                      ItemsSource="{Binding Path=Contracts[0].PickupList}"  
+                                      SelectedItem="{Binding Path=Contracts[0].SelectedPickup}"
+                                      DisplayMemberPath="PickupText"
+                                      SelectionChanged ="SelectionChanged_RedrawOverlay"/>
                             <ComboBox Grid.Row="1" Grid.Column="3"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Path=Contracts[1].PickupList}"  
-                                                SelectedItem="{Binding Path=Contracts[1].SelectedPickup}"
-                                                DisplayMemberPath="PickupText"
-                                                SelectionChanged ="SelectionChanged_RedrawOverlay"/>
+                                      MinWidth="100"
+                                      Margin="5"
+                                      ItemsSource="{Binding Path=Contracts[1].PickupList}"  
+                                      SelectedItem="{Binding Path=Contracts[1].SelectedPickup}"
+                                      DisplayMemberPath="PickupText"
+                                      SelectionChanged ="SelectionChanged_RedrawOverlay"/>
                             <ComboBox Grid.Row="2" Grid.Column="3"
-                                                MinWidth="100"
-                                                Margin="5"
-                                                ItemsSource="{Binding Path=Contracts[2].PickupList}"  
-                                                SelectedItem="{Binding Path=Contracts[2].SelectedPickup}"
-                                                DisplayMemberPath="PickupText"
-                                                SelectionChanged ="SelectionChanged_RedrawOverlay"/>
+                                      MinWidth="100"
+                                      Margin="5"
+                                      ItemsSource="{Binding Path=Contracts[2].PickupList}"  
+                                      SelectedItem="{Binding Path=Contracts[2].SelectedPickup}"
+                                      DisplayMemberPath="PickupText"
+                                      SelectionChanged ="SelectionChanged_RedrawOverlay"/>
 
                             <!--- Add action to list -->
                             <Button Grid.Row="0" Grid.Column="5"
@@ -219,8 +220,7 @@
                                   x:Name="DestionationOnly" 
                                   IsChecked="False"
                                   Margin="5"
-                                  Content ="Display Destinations only" Click="DestionationOnly_Click"
-                                  />
+                                  Content ="Display Destinations only" Click="DestionationOnly_Click"/>
                     </Grid>
                 </StackPanel>
 
@@ -230,6 +230,7 @@
                               Margin="5"
                               Visibility="Collapsed"
                               IsChecked="True"/>
+
                     <Button  Content="Clear dry ink" 
                              Margin="5"
                              Width="100"
@@ -370,5 +371,4 @@
             </Viewbox>
         </Grid>
     </DockPanel>
-</Window>
- 
+</Window> 

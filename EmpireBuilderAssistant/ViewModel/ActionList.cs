@@ -18,7 +18,7 @@ namespace EmpireBuilderAssistant.ViewModel
 
         public void AddContractActions(Contract contract)
         {
-            // Only add if contract selected 
+            // Only add if a pickup location was selected and not the "All Cities" option
             if (contract.SelectedPickup.PickupCity.PosX != 0)
             {
                 PlayerAction pickUpAction = new PlayerAction(contract, "Pickup " + contract.Cargo.Name + " in " + contract.SelectedPickup.PickupCity.Name);

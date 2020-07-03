@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Xaml;
 
+// Contract icon shape
 public enum ContractShape
 {
     Square,
@@ -153,10 +154,13 @@ namespace EmpireBuilderAssistant.Model
 
         public void RecalcPickupInfo()
         {
-            // Set not visible
+            // Contract updated so make visible on map
             IsContractVisible = true;
 
-            PickupList.Clear();            
+            // Clear the current pickup list
+            PickupList.Clear();
+
+            // Add the special first entry that shows all pickups on map
             if (Destintion != null)
             {
                 PickupList.Add(new PickupInfo(ObjectLists.allCities, "$" + Value + "M: Show all pickups to " + Destintion.Name));
@@ -165,8 +169,11 @@ namespace EmpireBuilderAssistant.Model
             {
                 PickupList.Add(new PickupInfo(ObjectLists.allCities, "Show all pickups"));
             }
+
+            // Select that first show all option
             SelectedPickup = PickupList[0];
 
+            // Now add all the pickup location for the cargo
             if (Cargo != null)
             {
                 foreach (string cityname in Cargo.Pickup)

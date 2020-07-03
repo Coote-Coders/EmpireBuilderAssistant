@@ -19,7 +19,6 @@ namespace EmpireBuilderAssistant.Model
         {
             ActionColor = contract.IconColor;
             ActionShape = contract.IconShape;
-
             ActionText = testText;
         }
     }

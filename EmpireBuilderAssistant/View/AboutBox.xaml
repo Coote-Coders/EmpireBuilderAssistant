@@ -19,7 +19,7 @@
             <Run Text="Version 1.0"/>
             <LineBreak/>
             <Run Text="By Roger Coote"/>
-            </TextBlock>
+        </TextBlock>
 
         <Button Grid.Column="1"
                 Content="Ok"

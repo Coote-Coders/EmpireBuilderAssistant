@@ -16,13 +16,17 @@ namespace EmpireBuilderAssistant.ViewModel
         public void OnPropertyChanged([CallerMemberName] string propName = "")
         {
             if (PropertyChanged != null)
+            {
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
         }
 
         public void InvalidateAllProperties()
         {
             foreach (var prop in GetType().GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.FlattenHierarchy))
+            {
                 OnPropertyChanged(prop.Name);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
