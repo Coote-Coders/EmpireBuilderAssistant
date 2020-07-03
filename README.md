@@ -29,7 +29,7 @@ Once a card is completed and you get a new card use the 'Edit cards' button to u
 In a debug build of the app a 'Randomize cards' button is visible that will quickly fill in all the contracts with random data.
 
 ### Contract icons on map
-Each of the 9 contracts (3 per card) have a different color and shape combination to distinguish them on the map.  For each contract the destination city has a black outline around the shape to separate it from the pick-up locations.  Each of the three cards has a check box next to it that controls if any of the contracts from card are visible on the map, this provides a quick way to just focus on a given card.  Within each card, each contract also has a check box that controls if that particular contract is show on the map,if the card's check box is also checked.
+Each of the 9 contracts (3 per card) have a different color and shape combination to distinguish them on the map.  For each contract the destination city has a black outline around the shape to separate it from the pick-up locations.  Each of the three cards has a check box next to it that controls if any of the contracts from the card are visible on the map, this provides a quick way to just focus on a given card.  Within each card, each contract also has a check box that controls if that particular contract is shown on the map, if the card's check box is also checked.
 
 If multiple pickups or drop-offs are located on the same city the colors of the icons will blend together and you can use the card and contract check box to find the overlapping contract. Overlapping pickup/drop-off are great way to maximize profit!!
 
@@ -49,7 +49,7 @@ The map has 'wet' and 'dry' ink support, when you first draw on the map red wet 
 
 
 ## Posable future updates (code contributions welcome)
-Here are some of the features I though about adding the future, 
+Here are some of the features I though about adding in the future: 
 * Save/load app state, contracts, action list and ink
 * Zoom feature for map
 * Drag and drop support in the action list
