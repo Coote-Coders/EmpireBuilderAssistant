@@ -345,7 +345,7 @@
             <Viewbox>
                 <!-- Grid size has to match that of the image, all elements stack ontop of each other-->
                 <Grid Width="2601" Height="2140">
-                    <Image Source="..\Map.JPG" x:Name="mapImage" Margin="-18,0,18,0"/>
+                    <Image Source="..\Map.JPG" x:Name="mapImage"/>
 
                     <Canvas x:Name="mapCanvas" 
                             Background="Transparent" 
