@@ -1,5 +1,8 @@
 # Empire Builder Assistant
 
+## Update
+**IMPORTANT** Development of this has moved to private rero for now
+
 ## Overview
 This is a Windows WPF app to help plan and track routes when playing the Empire Builder board game.  Features include:
 * Enter card contracts and see the pick-up and drop-off locations on map, each contract has unique shape and color combination
